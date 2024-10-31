@@ -13,6 +13,8 @@
   ],
   "prHourlyLimit": 20,
   "docker-compose": {
-    "fileMatch": ["^src/main/docker/[^/]*\\.ya?ml$"]
+    "fileMatch": [
+      "^src/main/docker/[^/]*\\.ya?ml$"
+    ]
   }
 }

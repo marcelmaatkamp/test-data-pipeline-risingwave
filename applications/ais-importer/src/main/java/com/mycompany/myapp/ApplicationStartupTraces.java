@@ -2,13 +2,15 @@ package com.mycompany.myapp;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.env.Environment;
-import com.mycompany.myapp.shared.error.domain.Assert;
 import com.mycompany.myapp.shared.generation.domain.ExcludeFromGeneratedCodeCoverage;
+import com.mycompany.myapp.shared.error.domain.Assert;
 
 final class ApplicationStartupTraces {
 
@@ -96,7 +98,7 @@ final class ApplicationStartupTraces {
       return null;
     }
 
-    return "Profile(s): \t%s".formatted(String.join(", ", profiles));
+    return new StringBuilder().append("Profile(s): \t").append(Stream.of(profiles).collect(Collectors.joining(", "))).toString();
   }
 
   @ExcludeFromGeneratedCodeCoverage(reason = "Hard to test implement detail error management")
