@@ -1,9 +1,12 @@
 logging:
+  config: classpath:logback.xml
   level:
     com:
       mycompany:
         myapp: 'OFF'
-  config: classpath:logback.xml
+        ais: 'OFF'
 spring:
   main:
     banner-mode: 'off'
+kafka:
+  bootstrap-servers: localhost:9092

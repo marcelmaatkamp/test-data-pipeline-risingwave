@@ -3,3 +3,4 @@ logging:
     com:
       mycompany:
         myapp: DEBUG
+        ais: DEBUG

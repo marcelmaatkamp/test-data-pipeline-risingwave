@@ -2,9 +2,9 @@ package com.mycompany.myapp.shared.error.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import com.mycompany.myapp.UnitTest;
 import java.time.Instant;
 import org.junit.jupiter.api.Test;
+import com.mycompany.myapp.UnitTest;
 
 @UnitTest
 class NotAfterTimeExceptionTest {
@@ -26,8 +26,9 @@ class NotAfterTimeExceptionTest {
     NotAfterTimeException exception = NotAfterTimeException.strictlyNotAfter().value(VALUE).field(FIELD).other(OTHER);
 
     assertDefaultInformation(exception);
-    assertThat(exception.getMessage())
-      .isEqualTo("Time 1970-01-01T00:22:17Z in \"myField\" must be strictly after 2024-02-21T21:00:00Z but wasn't");
+    assertThat(exception.getMessage()).isEqualTo(
+      "Time 1970-01-01T00:22:17Z in \"myField\" must be strictly after 2024-02-21T21:00:00Z but wasn't"
+    );
   }
 
   private void assertDefaultInformation(NotAfterTimeException exception) {
