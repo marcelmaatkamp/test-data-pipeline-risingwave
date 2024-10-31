@@ -1,0 +1,31 @@
+[0m12:29:16.633495 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x721c80729640>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x721c7edca690>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x721c7e8efe90>]}
+
+
+============================== 12:29:16.640334 | 8b913c41-656e-4a50-8867-be1bffcba32f ==============================
+[0m12:29:16.640334 [info ] [MainThread]: Running with dbt=1.8.7
+[0m12:29:16.641350 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'debug': 'False', 'version_check': 'True', 'log_path': 'logs', 'fail_fast': 'False', 'profiles_dir': '/home/codespace/.dbt', 'use_colors': 'True', 'use_experimental_parser': 'False', 'empty': 'None', 'quiet': 'False', 'no_print': 'None', 'log_format': 'default', 'invocation_command': 'dbt init', 'introspect': 'True', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'target_path': 'None', 'static_parser': 'True', 'send_anonymous_usage_stats': 'True'}
+[0m12:29:16.660263 [warn ] [MainThread]: [ConfigFolderDirectory]: Unable to parse logging event dictionary. Failed to parse dir field: expected string or bytes-like object, got 'PosixPath'.. Dictionary: {'dir': PosixPath('/home/codespace/.dbt')}
+[0m12:29:16.661217 [info ] [MainThread]: Creating dbt configuration folder at 
+[0m12:29:41.925923 [debug] [MainThread]: Starter project path: /home/codespace/.python/current/lib/python3.12/site-packages/dbt/include/starter_project
+[0m12:29:41.929522 [info ] [MainThread]: 
+Your new dbt project "risingwave_dbt" was created!
+
+For more information on how to configure the profiles.yml file,
+please consult the dbt documentation here:
+
+  https://docs.getdbt.com/docs/configure-your-profile
+
+One more thing:
+
+Need help? Don't hesitate to reach out to us via GitHub issues or on Slack:
+
+  https://community.getdbt.com/
+
+Happy modeling!
+
+[0m12:29:41.930210 [info ] [MainThread]: Setting up your profile.
+[0m12:31:42.797988 [info ] [MainThread]: Profile risingwave_dbt written to /home/codespace/.dbt/profiles.yml using target's profile_template.yml and your supplied values. Run 'dbt debug' to validate the connection.
+[0m12:31:42.800660 [debug] [MainThread]: Resource report: {"command_name": "init", "command_success": true, "command_wall_clock_time": 146.35612, "process_user_time": 1.45257, "process_kernel_time": 0.151877, "process_mem_max_rss": "91508", "process_in_blocks": "26888", "process_out_blocks": "80"}
+[0m12:31:42.801546 [debug] [MainThread]: Command `dbt init` succeeded at 12:31:42.801424 after 146.36 seconds
+[0m12:31:42.802194 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x721c7e35bda0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x721c7e3a5ac0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x721c7ea0f170>]}
+[0m12:31:42.803217 [debug] [MainThread]: Flushing usage events
