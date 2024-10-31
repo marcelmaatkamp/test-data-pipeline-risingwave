@@ -10,16 +10,21 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
 
+import org.springframework.context.ApplicationListener;
+import com.mycompany.myapp.shared.events.AISDataPojoEvent;
+import com.mycompany.myapp.ais.AISDataPojo;
+
+
 @Repository
-public class SampleProducer {
+public class AISDataProducer implements ApplicationListener<AISDataPojoEvent> {
 
-  private static final Logger log = LoggerFactory.getLogger(SampleProducer.class);
+  private static final Logger log = LoggerFactory.getLogger(AISDataProducer.class);
 
-  private final Producer<String, String> kafkaProducer;
+  private final Producer<String, AISDataPojo> kafkaProducer;
 
   private final String topicName;
 
-  public SampleProducer(@Value("${kafka.topic.sample}") String topicName, Producer<String, String> kafkaProducer) {
+  public AISDataProducer(@Value("${kafka.topic.sample}") String topicName, Producer<String, AISDataPojo> kafkaProducer) {
     this.kafkaProducer = kafkaProducer;
     this.topicName = topicName;
   }
@@ -29,8 +34,14 @@ public class SampleProducer {
     Runtime.getRuntime().addShutdownHook(new Thread(this::shutdown));
   }
 
-  public Future<RecordMetadata> send(final String message) {
-    final ProducerRecord<String, String> producerRecord = new ProducerRecord<>(topicName, message);
+  @Override
+  public void onApplicationEvent(AISDataPojoEvent aisDataPojoEvent) {
+      System.out.println("Received spring custom event - " + aisDataPojoEvent.getAISDataPojo());
+      send(aisDataPojoEvent.getAISDataPojo());
+  }
+
+  public Future<RecordMetadata> send(AISDataPojo aisDataPojo) {
+    final ProducerRecord<String, AISDataPojo> producerRecord = new ProducerRecord<>(topicName, aisDataPojo);
     log.info("Sending asynchronously a String producerRecord to topic: '{}'", topicName);
     return kafkaProducer.send(producerRecord);
   }

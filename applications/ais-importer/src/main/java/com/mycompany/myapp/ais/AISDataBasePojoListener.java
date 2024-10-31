@@ -7,10 +7,20 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.context.ApplicationEventPublisher;
+
+import com.mycompany.myapp.shared.events.AISDataPojoEvent;
+import org.springframework.stereotype.Component;
+import org.springframework.beans.factory.annotation.Autowired;
+
+@Component
 public class AISDataBasePojoListener extends AISDataBaseListener {
   private final List<AISDataPojo> aisDataPojos = new ArrayList<>();
 
   DateTimeFormatter parser = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss");
+
+  @Autowired
+  private ApplicationEventPublisher applicationEventPublisher;
 
   public List<AISDataPojo> getAisDataPojos() {
     return aisDataPojos;
@@ -38,5 +48,11 @@ public class AISDataBasePojoListener extends AISDataBaseListener {
       transceiverClass(ctx.transceiverClass() != null && !ctx.transceiverClass().isEmpty() ? ctx.transceiverClass().getText() : null).
       build();
     aisDataPojos.add(aisDataPojo);
+    sendToKafka(aisDataPojo);
+  }
+
+  private void sendToKafka(AISDataPojo aisDataPojo) { 
+    AISDataPojoEvent aisDataPojoEvent = new AISDataPojoEvent(this, aisDataPojo);
+    applicationEventPublisher.publishEvent(aisDataPojoEvent);
   }
 }
