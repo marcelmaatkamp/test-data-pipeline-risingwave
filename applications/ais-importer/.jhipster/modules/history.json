@@ -1,0 +1,278 @@
+{
+  "actions" : [ {
+    "module" : "init",
+    "date" : "2024-10-31T12:18:19.335188083Z",
+    "properties" : {
+      "packageName" : "com.mycompany.myapp",
+      "projectName" : "JHipster Sample Application",
+      "baseName" : "jhipsterSampleApplication",
+      "endOfLine" : "lf",
+      "indentSize" : 2,
+      "springConfigurationFormat" : "yaml"
+    }
+  }, {
+    "module" : "application-service-hexagonal-architecture-documentation",
+    "date" : "2024-10-31T12:18:19.382800788Z",
+    "properties" : {
+      "packageName" : "com.mycompany.myapp",
+      "projectName" : "JHipster Sample Application",
+      "baseName" : "jhipsterSampleApplication",
+      "endOfLine" : "lf",
+      "indentSize" : 2,
+      "springConfigurationFormat" : "yaml"
+    }
+  }, {
+    "module" : "renovate",
+    "date" : "2024-10-31T12:18:19.428508830Z",
+    "properties" : {
+      "packageName" : "com.mycompany.myapp",
+      "projectName" : "JHipster Sample Application",
+      "baseName" : "jhipsterSampleApplication",
+      "endOfLine" : "lf",
+      "indentSize" : 2,
+      "springConfigurationFormat" : "yaml"
+    }
+  }, {
+    "module" : "maven-java",
+    "date" : "2024-10-31T12:18:19.572203888Z",
+    "properties" : {
+      "packageName" : "com.mycompany.myapp",
+      "projectName" : "JHipster Sample Application",
+      "baseName" : "jhipsterSampleApplication",
+      "endOfLine" : "lf",
+      "indentSize" : 2,
+      "springConfigurationFormat" : "yaml"
+    }
+  }, {
+    "module" : "prettier",
+    "date" : "2024-10-31T12:18:19.667011932Z",
+    "properties" : {
+      "packageName" : "com.mycompany.myapp",
+      "projectName" : "JHipster Sample Application",
+      "baseName" : "jhipsterSampleApplication",
+      "endOfLine" : "lf",
+      "indentSize" : 2,
+      "springConfigurationFormat" : "yaml"
+    }
+  }, {
+    "module" : "checkstyle",
+    "date" : "2024-10-31T12:18:19.744129886Z",
+    "properties" : {
+      "packageName" : "com.mycompany.myapp",
+      "projectName" : "JHipster Sample Application",
+      "baseName" : "jhipsterSampleApplication",
+      "endOfLine" : "lf",
+      "indentSize" : 2,
+      "springConfigurationFormat" : "yaml"
+    }
+  }, {
+    "module" : "jacoco-with-min-coverage-check",
+    "date" : "2024-10-31T12:18:19.824649765Z",
+    "properties" : {
+      "packageName" : "com.mycompany.myapp",
+      "projectName" : "JHipster Sample Application",
+      "baseName" : "jhipsterSampleApplication",
+      "endOfLine" : "lf",
+      "indentSize" : 2,
+      "springConfigurationFormat" : "yaml"
+    }
+  }, {
+    "module" : "java-base",
+    "date" : "2024-10-31T12:18:19.929341839Z",
+    "properties" : {
+      "packageName" : "com.mycompany.myapp",
+      "projectName" : "JHipster Sample Application",
+      "baseName" : "jhipsterSampleApplication",
+      "endOfLine" : "lf",
+      "indentSize" : 2,
+      "springConfigurationFormat" : "yaml"
+    }
+  }, {
+    "module" : "maven-wrapper",
+    "date" : "2024-10-31T12:18:20.048146455Z",
+    "properties" : {
+      "packageName" : "com.mycompany.myapp",
+      "projectName" : "JHipster Sample Application",
+      "baseName" : "jhipsterSampleApplication",
+      "endOfLine" : "lf",
+      "indentSize" : 2,
+      "springConfigurationFormat" : "yaml"
+    }
+  }, {
+    "module" : "spring-boot",
+    "date" : "2024-10-31T12:18:20.298704728Z",
+    "properties" : {
+      "packageName" : "com.mycompany.myapp",
+      "projectName" : "JHipster Sample Application",
+      "baseName" : "jhipsterSampleApplication",
+      "endOfLine" : "lf",
+      "indentSize" : 2,
+      "springConfigurationFormat" : "yaml"
+    }
+  }, {
+    "module" : "spring-boot-kafka",
+    "date" : "2024-10-31T12:18:20.500835615Z",
+    "properties" : {
+      "packageName" : "com.mycompany.myapp",
+      "projectName" : "JHipster Sample Application",
+      "baseName" : "jhipsterSampleApplication",
+      "endOfLine" : "lf",
+      "indentSize" : 2,
+      "springConfigurationFormat" : "yaml"
+    }
+  }, {
+    "module" : "spring-boot-kafka-sample-producer-consumer",
+    "date" : "2024-10-31T12:18:20.657220649Z",
+    "properties" : {
+      "packageName" : "com.mycompany.myapp",
+      "projectName" : "JHipster Sample Application",
+      "baseName" : "jhipsterSampleApplication",
+      "endOfLine" : "lf",
+      "indentSize" : 2,
+      "springConfigurationFormat" : "yaml"
+    }
+  }, {
+    "module" : "init",
+    "date" : "2024-10-31T12:19:00.206419296Z",
+    "properties" : {
+      "packageName" : "com.mycompany.ais",
+      "projectName" : "JHipster AIS Kafka Application",
+      "baseName" : "jhipsterAiskafkaApplication",
+      "endOfLine" : "lf",
+      "indentSize" : 2,
+      "springConfigurationFormat" : "yaml"
+    }
+  }, {
+    "module" : "application-service-hexagonal-architecture-documentation",
+    "date" : "2024-10-31T12:19:00.417492003Z",
+    "properties" : {
+      "packageName" : "com.mycompany.ais",
+      "projectName" : "JHipster AIS Kafka Application",
+      "baseName" : "jhipsterAiskafkaApplication",
+      "endOfLine" : "lf",
+      "indentSize" : 2,
+      "springConfigurationFormat" : "yaml"
+    }
+  }, {
+    "module" : "renovate",
+    "date" : "2024-10-31T12:19:00.805492990Z",
+    "properties" : {
+      "packageName" : "com.mycompany.ais",
+      "projectName" : "JHipster AIS Kafka Application",
+      "baseName" : "jhipsterAiskafkaApplication",
+      "endOfLine" : "lf",
+      "indentSize" : 2,
+      "springConfigurationFormat" : "yaml"
+    }
+  }, {
+    "module" : "maven-java",
+    "date" : "2024-10-31T12:19:01.198343121Z",
+    "properties" : {
+      "packageName" : "com.mycompany.ais",
+      "projectName" : "JHipster AIS Kafka Application",
+      "baseName" : "jhipsterAiskafkaApplication",
+      "endOfLine" : "lf",
+      "indentSize" : 2,
+      "springConfigurationFormat" : "yaml"
+    }
+  }, {
+    "module" : "prettier",
+    "date" : "2024-10-31T12:19:01.518705276Z",
+    "properties" : {
+      "packageName" : "com.mycompany.ais",
+      "projectName" : "JHipster AIS Kafka Application",
+      "baseName" : "jhipsterAiskafkaApplication",
+      "endOfLine" : "lf",
+      "indentSize" : 2,
+      "springConfigurationFormat" : "yaml"
+    }
+  }, {
+    "module" : "checkstyle",
+    "date" : "2024-10-31T12:19:01.746686558Z",
+    "properties" : {
+      "packageName" : "com.mycompany.ais",
+      "projectName" : "JHipster AIS Kafka Application",
+      "baseName" : "jhipsterAiskafkaApplication",
+      "endOfLine" : "lf",
+      "indentSize" : 2,
+      "springConfigurationFormat" : "yaml"
+    }
+  }, {
+    "module" : "jacoco-with-min-coverage-check",
+    "date" : "2024-10-31T12:19:01.928801980Z",
+    "properties" : {
+      "packageName" : "com.mycompany.ais",
+      "projectName" : "JHipster AIS Kafka Application",
+      "baseName" : "jhipsterAiskafkaApplication",
+      "endOfLine" : "lf",
+      "indentSize" : 2,
+      "springConfigurationFormat" : "yaml"
+    }
+  }, {
+    "module" : "java-base",
+    "date" : "2024-10-31T12:19:02.145293965Z",
+    "properties" : {
+      "packageName" : "com.mycompany.ais",
+      "projectName" : "JHipster AIS Kafka Application",
+      "baseName" : "jhipsterAiskafkaApplication",
+      "endOfLine" : "lf",
+      "indentSize" : 2,
+      "springConfigurationFormat" : "yaml"
+    }
+  }, {
+    "module" : "maven-wrapper",
+    "date" : "2024-10-31T12:19:02.414521726Z",
+    "properties" : {
+      "packageName" : "com.mycompany.ais",
+      "projectName" : "JHipster AIS Kafka Application",
+      "baseName" : "jhipsterAiskafkaApplication",
+      "endOfLine" : "lf",
+      "indentSize" : 2,
+      "springConfigurationFormat" : "yaml"
+    }
+  }, {
+    "module" : "spring-boot",
+    "date" : "2024-10-31T12:19:02.789657499Z",
+    "properties" : {
+      "packageName" : "com.mycompany.ais",
+      "projectName" : "JHipster AIS Kafka Application",
+      "baseName" : "jhipsterAiskafkaApplication",
+      "endOfLine" : "lf",
+      "indentSize" : 2,
+      "springConfigurationFormat" : "yaml"
+    }
+  }, {
+    "module" : "spring-boot-kafka",
+    "date" : "2024-10-31T12:19:03.049322236Z",
+    "properties" : {
+      "packageName" : "com.mycompany.ais",
+      "projectName" : "JHipster AIS Kafka Application",
+      "baseName" : "jhipsterAiskafkaApplication",
+      "endOfLine" : "lf",
+      "indentSize" : 2,
+      "springConfigurationFormat" : "yaml"
+    }
+  }, {
+    "module" : "spring-boot-kafka-sample-producer-consumer",
+    "date" : "2024-10-31T12:19:03.282331503Z",
+    "properties" : {
+      "packageName" : "com.mycompany.ais",
+      "projectName" : "JHipster AIS Kafka Application",
+      "baseName" : "jhipsterAiskafkaApplication",
+      "endOfLine" : "lf",
+      "indentSize" : 2,
+      "springConfigurationFormat" : "yaml"
+    }
+  }, {
+    "module" : "github-actions-maven",
+    "date" : "2024-10-31T12:22:04.524263020Z",
+    "properties" : {
+      "packageName" : "com.mycompany.ais",
+      "projectName" : "JHipster AIS Kafka Application",
+      "baseName" : "jhipsterAiskafkaApplication",
+      "endOfLine" : "lf",
+      "indentSize" : 2,
+      "springConfigurationFormat" : "yaml"
+    }
+  } ]
+}
