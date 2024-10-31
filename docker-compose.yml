@@ -53,7 +53,7 @@ services:
       - postgres-0
       - minio-0
     volumes:
-      - "./risingwave.toml:/risingwave.toml"
+      - "./applications/risingwave/risingwave.toml:/risingwave.toml"
     environment:
       RUST_BACKTRACE: "1"
       # If ENABLE_TELEMETRY is not set, telemetry will start by default
@@ -110,10 +110,10 @@ services:
     depends_on: [ ]
     volumes:
       - "grafana-0:/var/lib/grafana"
-      - "./grafana.ini:/etc/grafana/grafana.ini"
-      - "./grafana-risedev-datasource.yml:/etc/grafana/provisioning/datasources/grafana-risedev-datasource.yml"
-      - "./grafana-risedev-dashboard.yml:/etc/grafana/provisioning/dashboards/grafana-risedev-dashboard.yml"
-      - "./dashboards:/dashboards"
+      - "./applications/grafana/grafana.ini:/etc/grafana/grafana.ini"
+      - "./applications/grafana/grafana-risedev-datasource.yml:/etc/grafana/provisioning/datasources/grafana-risedev-datasource.yml"
+      - "./applications/grafana/grafana-risedev-dashboard.yml:/etc/grafana/provisioning/dashboards/grafana-risedev-dashboard.yml"
+      - "./applications/grafana/dashboards:/dashboards"
     environment: {}
     container_name: grafana-0
     healthcheck:
@@ -187,7 +187,7 @@ services:
     depends_on: [ ]
     volumes:
       - "prometheus-0:/prometheus"
-      - "./prometheus.yaml:/etc/prometheus/prometheus.yml"
+      - "./applications/prometheus/prometheus.yaml:/etc/prometheus/prometheus.yml"
     environment: {}
     container_name: prometheus-0
     healthcheck:
@@ -265,7 +265,6 @@ services:
       - 8080:8080
     depends_on:
       - message_queue
-
 
 volumes:
   postgres-0:
