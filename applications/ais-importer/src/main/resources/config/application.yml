@@ -18,6 +18,8 @@ kafka:
     timeout: 10000
   producer:
     '[key.serializer]': org.apache.kafka.common.serialization.StringSerializer
-    '[value.serializer]': org.apache.kafka.common.serialization.StringSerializer
+    '[value.serializer]': org.springframework.kafka.support.serializer.JsonSerializer
   topic:
     sample: queue.jhipsterAiskafkaApplication.sample
+    
+spring.jackson.serialization.FAIL_ON_EMPTY_BEANS=false
