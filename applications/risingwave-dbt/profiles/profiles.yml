@@ -1,0 +1,12 @@
+ais:
+  outputs:
+    dev:
+      dbname: dev
+      host: risingwave-standalone
+      password: ''
+      port: 4566
+      schema: public
+      threads: 1
+      type: risingwave
+      user: root
+  target: dev

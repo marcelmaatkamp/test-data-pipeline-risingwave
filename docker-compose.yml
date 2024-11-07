@@ -273,7 +273,26 @@ services:
       - ./applications/ais-importer/ais.csv:/application/ais.csv
     environment:
       KAFKA_BOOTSTRAP_SERVERS: redpanda:29092
-      KAFKA_TOPIC: ais-data-import
+      KAFKA_PRODUCER_TOPIC: ais-data
+
+  risingwave-dbt:
+    image: ghcr.io/dbt-labs/dbt-risingwave:1.8.2
+    build:
+      context: applications/risingwave-dbt/
+    command: run
+    depends_on:
+      risingwave-standalone:
+        condition: service_healthy
+    ports:
+      - 8086:8080
+    volumes:
+      - ./applications/risingwave-dbt/:/usr/app/dbt/:ro
+      - ./applications/risingwave-dbt/profiles.yml:/root/,dbt/profiles.yml
+    environment:
+      KAFKA_BOOTSTRAP_SERVERS: redpanda:29092
+      KAFKA_PRODUCER_TOPIC: ais-data
+
+
 volumes:
   postgres-0:
     external: false
