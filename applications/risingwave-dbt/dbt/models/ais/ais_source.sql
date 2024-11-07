@@ -19,7 +19,7 @@ create SOURCE {{ this }} (
     Cargo VARCHAR,
     TransceiverClass VARCHAR
 ) with (
-    connector = 'redpanda',
+    connector = 'kafka',
     topic = 'ais-data',
     properties.bootstrap.server = 'redpanda:29092',
     scan.startup.mode = 'earliest' -- or 'latest'
