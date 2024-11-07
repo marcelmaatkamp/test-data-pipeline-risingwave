@@ -3,17 +3,23 @@
 # startup
 
 ```bash
-docker compose up -d console
+docker compose \
+  up -d \
+    console \
+    importer
 ```
 
-# import
-
+# import 
 ```bash
-docker compose up importer
+docker compose \
+  up -d \
+    risingwave-standalone \
+    risingwave-dbt
 ```
-
-# show
 
 ```bash
 docker compose run postgres-0 bash -c 'psql -h risingwave-standalone -p 4566 -d dev -U root'
 ```
+
+# show
+

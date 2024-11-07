@@ -276,7 +276,7 @@ services:
       KAFKA_PRODUCER_TOPIC: ais-data
 
   risingwave-dbt:
-    image: ghcr.io/dbt-labs/dbt-risingwave:1.8.2
+    # image: ghcr.io/dbt-labs/dbt-risingwave:1.8.2
     build:
       context: applications/risingwave-dbt/
     command: run --debug --profile=risingwave_dbt --target=dev --fail-fast
