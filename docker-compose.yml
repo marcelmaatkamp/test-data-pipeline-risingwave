@@ -279,15 +279,15 @@ services:
     image: ghcr.io/dbt-labs/dbt-risingwave:1.8.2
     build:
       context: applications/risingwave-dbt/
-    command: run
+    command: run --debug --profile=risingwave_dbt --target=dev --fail-fast
     depends_on:
       risingwave-standalone:
         condition: service_healthy
     ports:
       - 8086:8080
     volumes:
-      - ./applications/risingwave-dbt/:/usr/app/dbt/:ro
-      - ./applications/risingwave-dbt/profiles.yml:/root/,dbt/profiles.yml
+      - ./applications/risingwave-dbt/dbt/:/usr/app/dbt/
+      - ./applications/risingwave-dbt/profiles/profiles.yml:/root/.dbt/profiles.yml
     environment:
       KAFKA_BOOTSTRAP_SERVERS: redpanda:29092
       KAFKA_PRODUCER_TOPIC: ais-data

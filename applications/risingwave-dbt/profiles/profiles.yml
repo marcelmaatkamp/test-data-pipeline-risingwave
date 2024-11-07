@@ -1,9 +1,9 @@
-ais:
+risingwave_dbt:
   outputs:
     dev:
       dbname: dev
       host: risingwave-standalone
-      password: ''
+      password: 'root'
       port: 4566
       schema: public
       threads: 1
