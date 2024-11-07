@@ -199,25 +199,21 @@ services:
       retries: 5
     restart: always
 
-  message_queue:
+  redpanda:
     image: "redpandadata/redpanda:v23.3.4"
     command:
-      - redpanda
-      - start
-      - "--smp"
-      - "1"
-      - "--reserve-memory"
-      - 0M
-      - "--memory"
-      - 4G
-      - "--overprovisioned"
-      - "--node-id"
-      - "0"
-      - "--check=false"
-      - "--kafka-addr"
-      - "PLAINTEXT://0.0.0.0:29092,OUTSIDE://0.0.0.0:9092"
-      - "--advertise-kafka-addr"
-      - "PLAINTEXT://message_queue:29092,OUTSIDE://localhost:9092"
+      - redpanda start
+      - --overprovisioned
+      - --smp 1
+      - --memory 1G
+      - --reserve-memory 0M
+      - --node-id 0
+      - --check=false
+      - --kafka-addr PLAINTEXT://0.0.0.0:29092,OUTSIDE://0.0.0.0:9092
+      - --advertise-kafka-addr PLAINTEXT://redpanda:29092,OUTSIDE://localhost:9092
+      - --set redpanda.enable_transactions=true
+      - --set redpanda.enable_idempotence=true
+      - --set redpanda.data_transforms_enabled=true
     expose:
       - "29092"
       - "9092"
@@ -226,12 +222,12 @@ services:
       - "29092:29092"
       - "9092:9092"
       - "9644:9644"
-      - "8081:8081"
+      - "8083:8081"
     depends_on: [ ]
     volumes:
-      - "message_queue:/var/lib/redpanda/data"
+      - "redpanda:/var/lib/redpanda/data"
     environment: {}
-    container_name: message_queue
+    container_name: redpanda
     healthcheck:
       test: curl -f localhost:9644/v1/status/ready
       interval: 1s
@@ -248,7 +244,7 @@ services:
       CONFIG_FILEPATH: /tmp/config.yml
       CONSOLE_CONFIG_FILE: |
         kafka:
-          brokers: ["redpanda:9092"]
+          brokers: ["redpanda:29092"]
           schemaRegistry:
             enabled: true
             urls: ["http://redpanda:8081"]
@@ -262,10 +258,22 @@ services:
             - name: local-connect-cluster
               url: http://connect:8083
     ports:
-      - 8080:8080
+      - 8084:8080
     depends_on:
-      - message_queue
+      - redpanda
 
+  importer:
+    image: "ghcr.io/marcelmaatkamp/marinecadastreaisdataimporterintokafka:v1.0.0"
+    depends_on:
+      redpanda:
+        condition: service_healthy
+    ports:
+      - 8085:8080
+    volumes:
+      - ./applications/ais-importer/ais.csv:/application/ais.csv
+    environment:
+      KAFKA_BOOTSTRAP_SERVERS: redpanda:29092
+      KAFKA_TOPIC: ais-data-import
 volumes:
   postgres-0:
     external: false
@@ -275,6 +283,6 @@ volumes:
     external: false
   prometheus-0:
     external: false
-  message_queue:
+  redpanda:
     external: false
 
