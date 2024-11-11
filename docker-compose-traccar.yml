@@ -1,0 +1,20 @@
+services:
+  traccar:
+    image: traccar/traccar:6.5-alpine
+    restart: unless-stopped
+    depends_on:
+      - postgres-0
+    ports: 
+      - "83:8082"
+      - "5000-5150:5000-5150"
+      - "5000-5150:5000-5150/udp"
+    environment:
+      DATABASE_DRIVER: postgres
+      DATABASE_URL: jdbc:postgresql://postgres:@postgres-0:5432/metadata
+      DATABASE_USER: postgres
+      # DATABASE_PASSWORD: ${DATABASE_PASSWORD}=value
+    volumes:
+      - traccar:/opt/traccar/logs:rw
+     
+volumes:
+  traccar:
