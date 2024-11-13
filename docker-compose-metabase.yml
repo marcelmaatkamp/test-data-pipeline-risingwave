@@ -3,12 +3,12 @@ services:
     image: metabase/metabase:v0.51.3.2
     restart: always
     environment:
-      MB_DB_TYPE: "postgres"
-      MB_DB_DBNAME: "dev"
-      MB_DB_PORT: "5432"
-      MB_DB_USER: "root"
-      # MB_DB_PASS: "${DB_PASSWORD}"
-      MB_DB_HOST: "risingwave-standalone"
+      MB_DB_TYPE: postgres
+      MB_DB_HOST: risingwave-standalone
+      MB_DB_PORT: 5432
+      MB_DB_USER: root
+      MB_DB_PASS: root
+      MB_DB_DBNAME: dev
       # MB_PASSWORD_COMPLEXITY: strong
       # MB_PASSWORD_LENGTH: 10
       # JAVA_TIMEZONE: "${MB_JAVA_TIMEZONE}"
