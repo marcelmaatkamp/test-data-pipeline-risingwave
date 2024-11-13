@@ -5,7 +5,7 @@ services:
     environment:
       MB_DB_TYPE: postgres
       MB_DB_HOST: risingwave-standalone
-      MB_DB_PORT: 5432
+      MB_DB_PORT: 4566
       MB_DB_USER: root
       MB_DB_PASS: root
       MB_DB_DBNAME: dev
