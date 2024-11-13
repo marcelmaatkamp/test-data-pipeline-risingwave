@@ -4,7 +4,7 @@ services:
     restart: always
     environment:
       MB_DB_TYPE: "postgres"
-      MB_DB_DBNAME: "risingwave"
+      MB_DB_DBNAME: "dev"
       MB_DB_PORT: "5432"
       MB_DB_USER: "root"
       # MB_DB_PASS: "${DB_PASSWORD}"
