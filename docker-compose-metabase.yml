@@ -8,7 +8,7 @@ services:
       MB_DB_PORT: "5432"
       MB_DB_USER: "root"
       # MB_DB_PASS: "${DB_PASSWORD}"
-      MB_DB_HOST: "risingwave"
+      MB_DB_HOST: "risingwave-standalone"
       # MB_PASSWORD_COMPLEXITY: strong
       # MB_PASSWORD_LENGTH: 10
       # JAVA_TIMEZONE: "${MB_JAVA_TIMEZONE}"
