@@ -23,3 +23,9 @@ docker compose run postgres-0 bash -c 'psql -h risingwave-standalone -p 4566 -d 
 
 # show
 
+
+# metabase
+```bash
+docker compose exec postgres-0 bash -c 'createdb -U postgres metabase'
+```
+

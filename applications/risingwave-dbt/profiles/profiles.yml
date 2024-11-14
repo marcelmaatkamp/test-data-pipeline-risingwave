@@ -1,12 +1,12 @@
 risingwave_dbt:
   outputs:
     dev:
-      dbname: dev
+      type: risingwave      
       host: risingwave-standalone
-      password: 'root'
       port: 4566
+      user: root
+      password: root
+      dbname: dev
       schema: public
       threads: 1
-      type: risingwave
-      user: root
   target: dev

@@ -1,18 +1,28 @@
 services:
+
+  postgres-metabase:
+    image: postgres:15-alpine
+    restart: always
+    environment:
+      - POSTGRES_DB=metabase
+      - POSTGRES_USER=metabase
+      - POSTGRES_PASSWORD=metabase
+      - POSTGRES_INITDB_ARGS=--encoding=UTF-8 --lc-collate=C --lc-ctype=C
+
   metabase:
     image: metabase/metabase:v0.51.3.2
     restart: always
     environment:
       MB_DB_TYPE: postgres
-      MB_DB_HOST: risingwave-standalone
-      MB_DB_PORT: 4566
-      MB_DB_USER: root
-      MB_DB_PASS: root
-      MB_DB_DBNAME: dev
+      MB_DB_HOST: postgres-metabase
+      MB_DB_PORT: 5432
+      MB_DB_USER: metabase
+      MB_DB_PASS: metabase
+      MB_DB_DBNAME: metabase
       # MB_PASSWORD_COMPLEXITY: strong
       # MB_PASSWORD_LENGTH: 10
       # JAVA_TIMEZONE: "${MB_JAVA_TIMEZONE}"
     ports:
       - 3000:3000
     depends_on:
-      - risingwave-standalone
+      - postgres-metabase

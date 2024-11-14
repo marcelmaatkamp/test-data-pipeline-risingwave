@@ -2,9 +2,8 @@
 
 CREATE SINK {{ this }} AS
 SELECT
-   avg(length) as avg_length,
-   avg(width) as avg_width
-FROM ais_source
+   *
+FROM {{ ref('ais_materialized_view_exessive_speed') }}
 WITH (
    connector='kafka',
    properties.bootstrap.server='redpanda:29092',
