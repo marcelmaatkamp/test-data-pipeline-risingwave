@@ -18,7 +18,7 @@ docker compose \
 ```
 
 ```bash
-docker compose run postgres-0 bash -c 'psql -h risingwave-standalone -p 4566 -d dev -U root'
+docker compose run postgres-0 bash -c 'psql -h risingwave-standalone -p 4566 -d dev -U root -c "select * from ais_source"'
 ```
 
 `

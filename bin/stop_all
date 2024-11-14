@@ -5,3 +5,5 @@ docker compose \
  -f docker-compose-metabase.yml \
  -f docker-compose-traccar.yml \
  down --volumes
+
+docker rm -f $(docker ps -a | grep postgres | awk '{ print $1 }')

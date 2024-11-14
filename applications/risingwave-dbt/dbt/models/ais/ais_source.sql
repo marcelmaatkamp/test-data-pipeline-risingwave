@@ -2,7 +2,7 @@
 
 create SOURCE {{ this }} (
     mmsi INTEGER,
-    BaseDateTime timestamp with time zone,
+    DateTime TIMESTAMP WITH TIME ZONE,
     LAT DOUBLE PRECISION,
     LON DOUBLE PRECISION,
     SOG REAL,
@@ -23,6 +23,4 @@ create SOURCE {{ this }} (
     topic = 'ais-data',
     properties.bootstrap.server = 'redpanda:29092',
     scan.startup.mode = 'earliest' -- or 'latest'
-) FORMAT PLAIN ENCODE JSON (
-    timestamptz.handling.mode = 'guess_number_unit'
-)
+) FORMAT PLAIN ENCODE JSON;

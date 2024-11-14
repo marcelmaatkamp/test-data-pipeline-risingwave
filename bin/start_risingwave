@@ -1,5 +1,7 @@
 #!/bin/bash
 docker compose \
-  up --build -d \
-    risingwave-standalone \
+  up -d --remove-orphans \
+    risingwave-standalone
+docker compose \
+  up --build
     risingwave-dbt
