@@ -17,12 +17,15 @@ docker compose \
     risingwave-dbt
 ```
 
-```bash
-docker compose run postgres-0 bash -c 'psql -h risingwave-standalone -p 4566 -d dev -U root'
+```bashdocker compose run postgres-0 bash -c 'psql -h risingwave-standalone -p 4566 -d dev -U root'
+
 ```
 
 # show
 
+
+2023-06-13T10:00:00Z
+2024-01-01T00:00:04Z
 
 # metabase
 ```bash

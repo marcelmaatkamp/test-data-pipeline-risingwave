@@ -221,11 +221,11 @@ services:
     ports:
       - 8085:8080
     volumes:
-      - ./AIS_2024_01_01.csv:/application/ais.csv
+      - ./AIS_2024_01_01.csv:/application/AIS_2024_01_01.csv
     environment:
       kafka.bootstrap.servers: redpanda:29092
       kafka.producer.topic: ais-data
-      application.input.filename: /application/ais.csv
+      application.input.filename: /application/AIS_2024_01_01.csv
       application.simulateRealtimeInserts.enabled: true
       application.simulateRealtimeInserts.millisToWait: 300
 
