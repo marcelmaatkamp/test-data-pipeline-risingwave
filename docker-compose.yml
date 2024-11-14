@@ -71,6 +71,7 @@ services:
         - bash -c 'printf \"GET / HTTP/1.1\n\n\" > /dev/tcp/127.0.0.1/5690; exit $$?;'
       interval: 1s
       timeout: 5s
+      start_period: 1m
     restart: always
     deploy:
       resources:
@@ -166,8 +167,8 @@ services:
       - "9092"
       - "9644"
     ports:
-      - "29092:29092"
-      # - "9092:9092"
+      # - "29092:29092"
+      - "9092:9092"
       # - "9644:9644"
       # - "8083:8081"
     depends_on: [ ]
@@ -221,11 +222,11 @@ services:
     ports:
       - 8085:8080
     volumes:
-      - ./AIS_2024_01_01.csv:/application/AIS_2024_01_01.csv
+      - ./AIS_2024_01_01.csv:/application/ais.csv
     environment:
       kafka.bootstrap.servers: redpanda:29092
       kafka.producer.topic: ais-data
-      application.input.filename: /application/AIS_2024_01_01.csv
+      application.input.filename: /application/ais.csv
       application.simulateRealtimeInserts.enabled: true
       application.simulateRealtimeInserts.millisToWait: 300
 
@@ -237,6 +238,8 @@ services:
     depends_on:
       risingwave-standalone:
         condition: service_healthy
+        restart: true
+
     expose:
       - 8080
     ports:

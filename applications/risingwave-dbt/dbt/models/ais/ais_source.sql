@@ -24,10 +24,5 @@ create SOURCE {{ this }} (
     properties.bootstrap.server = 'redpanda:29092',
     scan.startup.mode = 'earliest' -- or 'latest'
 ) FORMAT PLAIN ENCODE JSON (
-    timestamptz.handling.mode='millis'
+    timestamptz.handling.mode = 'guess_number_unit'
 )
-
-FORMAT PLAIN
-ENCODE JSON [(
-  [timestamptz.handling.mode = 'milli']
-)]

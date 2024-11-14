@@ -1,0 +1,8 @@
+#!/bin/bash
+docker compose \
+  down --volumes \
+    minio-0 \
+    postgres-0 \
+    risingwave-standalone \
+    risingwave-dbt
+
