@@ -1,0 +1,11 @@
+services: 
+  electric:
+    image: electricsql/electric
+    environment:
+      DATABASE_URL: postgres://${RISINGWAVE_USERNAME}:${RISINGWAVE_PASSWORD}@${RISINGWAVE_HOSTNAME}:${RISINGWAVE_PORT}/${RISINGWAVE_DATABASE}?sslmode=disable
+      # DATABASE_URL: postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres/${POSTGRES_DB}?sslmode=disable
+    ports:
+      - "3000:3000"
+    depends_on:
+      - postgres
+

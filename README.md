@@ -2,6 +2,8 @@
 
 importer -> rw -> pocketbase -> electric -> frontend
 
+docker exec -ti postgres psql -h risingwave -p 4566 -d dev -U root
+
 # startup
 
 ```bash
@@ -20,7 +22,7 @@ docker compose \
 ```
 
 ```bash
-docker compose run postgres-0 bash -c 'psql -h risingwave-standalone -p 4566 -d dev -U root -c "select * from ais_source"'
+docker compose run postgres bash -c 'psql -h risingwave -p 4566 -d dev -U root -c "select * from ais_source"'
 ```
 
 `
