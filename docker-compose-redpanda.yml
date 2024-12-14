@@ -1,0 +1,64 @@
+services:
+  
+  redpanda:
+    image: "redpandadata/redpanda:v23.3.4"
+    command: |
+      redpanda start
+        --overprovisioned
+        --smp 1
+        --memory 1G
+        --reserve-memory 0M
+        --node-id 0
+        --check=false
+        --kafka-addr PLAINTEXT://0.0.0.0:29092,OUTSIDE://0.0.0.0:9092
+        --advertise-kafka-addr PLAINTEXT://redpanda:29092,OUTSIDE://localhost:9092
+        --set redpanda.enable_transactions=true
+        --set redpanda.enable_idempotence=true
+        --set redpanda.data_transforms_enabled=true
+    expose:
+      - "29092"
+      - "9092"
+      - "9644"
+    ports:
+      # - "29092:29092"
+      - "9092:9092"
+      # - "9644:9644"
+      # - "8083:8081"
+    depends_on: [ ]
+    volumes:
+      - "redpanda:/var/lib/redpanda/data"
+    environment: {}
+    container_name: redpanda
+    healthcheck:
+      test: curl -f localhost:9644/v1/status/ready
+      interval: 1s
+      timeout: 5s
+      retries: 5
+    restart: always
+
+  console:
+    image: docker.redpanda.com/redpandadata/console:v2.7.2
+    container_name: console
+    entrypoint: /bin/sh
+    command: -c "echo \"$$CONSOLE_CONFIG_FILE\" > /tmp/config.yml; /app/console"
+    environment:
+      CONFIG_FILEPATH: /tmp/config.yml
+      CONSOLE_CONFIG_FILE: |
+        kafka:
+          brokers: ["redpanda:29092"]
+          schemaRegistry:
+            enabled: true
+            urls: ["http://redpanda:8081"]
+        redpanda:
+          adminApi:
+            enabled: true
+            urls: ["http://redpanda:9644"]
+        connect:
+          enabled: true
+          clusters:
+            - name: local-connect-cluster
+              url: http://connect:8083
+
+volumes:
+  redpanda:
+    external: false

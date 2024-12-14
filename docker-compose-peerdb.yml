@@ -1,0 +1,16 @@
+services:    
+ peerdb:
+    image: peerdb/peerdb:latest
+    ports:
+      - "8080:8080" # PeerDB UI
+      - "9090:9090" # PeerDB gRPC API
+    environment:
+      # PeerDB requires a database for its own metadata.
+      # You can use Postgres or SQLite. Here we use Postgres
+      PEERDB_DATABASE_URL: postgres://peerdb_user:peerdb_password@peerdb_postgres:5432/peerdb
+    depends_on:
+      - peerdb_postgres
+      - postgres
+      - clickhouse
+    volumes:
+      - peerdb_data:/var/lib/peerdb

@@ -1,0 +1,20 @@
+services:
+
+  clickhouse:
+    image: clickhouse/clickhouse-server:latest
+    ports:
+      - "8123:8123" # HTTP
+      - "9000:9000" # Native
+      - "9009:9009" # TCP for interserver communication
+    ulimits:
+      nofile: 262144
+    volumes:
+      - clickhouse_data:/var/lib/clickhouse
+      - clickhouse_config:/etc/clickhouse-server/config.d
+      - clickhouse_users:/etc/clickhouse-server/users.d
+
+volumes:
+  postgres_data:
+  clickhouse_data:
+  clickhouse_config:
+  clickhouse_users:

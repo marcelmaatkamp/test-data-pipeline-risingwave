@@ -6,7 +6,7 @@ global:
 scrape_configs:
   - job_name: prometheus
     static_configs:
-      - targets: ["prometheus-0:9500"]
+      - targets: ["prometheus:9500"]
 
   - job_name: compute
     static_configs:
@@ -19,7 +19,7 @@ scrape_configs:
   - job_name: minio
     metrics_path: /minio/v2/metrics/cluster
     static_configs:
-      - targets: ["minio-0:9301"]
+      - targets: ["minio:9301"]
 
   - job_name: compactor
     static_configs:

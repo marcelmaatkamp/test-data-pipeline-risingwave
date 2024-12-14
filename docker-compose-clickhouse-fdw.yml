@@ -1,0 +1,33 @@
+version: "3.9"
+services:
+  postgres_fdw:
+    image: postgres:15
+    depends_on:
+      - clickhouse
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    ports:
+      - "5433:5432" # Different port to avoid conflict
+    command: ["/bin/bash", "-c", "apt-get update && apt-get install -y postgresql-15-clickhouse-fdw && psql -v ON_ERROR_STOP=1 -U supabase_user -d supabase -c \"CREATE EXTENSION clickhouse_fdw; CREATE SERVER clickhouse_server FOREIGN DATA WRAPPER clickhouse_fdw OPTIONS (host 'clickhouse', port '9000', database 'default'); CREATE USER MAPPING FOR supabase_user SERVER clickhouse_server OPTIONS (user '', password '');\" && postgres"] # Install extension and create server
+    links:
+      - clickhouse
+
+  clickhouse:
+    image: clickhouse/clickhouse-server:latest
+    ports:
+      - "8124:8123" # HTTP
+      - "9001:9000" # Native
+      - "9010:9009" # TCP for interserver communication
+    ulimits:
+      nofile: 262144
+    volumes:
+      - clickhouse_data_fdw:/var/lib/clickhouse
+      - clickhouse_config_fdw:/etc/clickhouse-server/config.d
+      - clickhouse_users_fdw:/etc/clickhouse-server/users.d
+
+volumes:
+  clickhouse_data_fdw:
+  clickhouse_config_fdw:
+  clickhouse_users_fdw:

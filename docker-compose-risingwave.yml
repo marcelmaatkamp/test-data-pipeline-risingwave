@@ -1,0 +1,82 @@
+x-image: &image
+  image: ${RW_IMAGE:-risingwavelabs/risingwave:v2.1.0-rc.2} # v2.0.3
+
+services:
+  risingwave:
+    <<: *image
+    command: |
+      standalone --meta-opts="
+        --listen-addr 0.0.0.0:5690
+        --advertise-addr 0.0.0.0:5690
+        --dashboard-host 0.0.0.0:5691
+        --prometheus-host 0.0.0.0:1250
+        --prometheus-endpoint http://prometheus:9500
+        --backend sql
+        --sql-endpoint postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB} \
+        --state-store hummock+minio://${MINIO_ROOT_USER}:${MINIO_ROOT_PASSWORD}@minio:9301/${MINIO_ROOT_BUCKET}
+        --data-directory ${MINIO_ROOT_BUCKET}
+        --config-path /risingwave.toml"
+      --compute-opts="
+        --config-path /risingwave.toml
+        --listen-addr 0.0.0.0:5688
+        --prometheus-listener-addr 0.0.0.0:1250
+        --advertise-addr 0.0.0.0:5688
+        --async-stack-trace verbose
+        #--parallelism 4
+        #--total-memory-bytes 8589934592
+        --role both
+        --meta-address http://0.0.0.0:5690"
+      --frontend-opts="
+        --config-path /risingwave.toml
+        --listen-addr 0.0.0.0:4566
+        --advertise-addr 0.0.0.0:4566
+        --prometheus-listener-addr 0.0.0.0:1250
+        --health-check-listener-addr 0.0.0.0:6786
+        --meta-addr http://0.0.0.0:5690"
+      --compactor-opts="
+        --listen-addr 0.0.0.0:6660
+        --prometheus-listener-addr 0.0.0.0:1250
+        --advertise-addr 0.0.0.0:6660
+        --meta-address http://0.0.0.0:5690"
+    expose:
+      - "6660"
+      - "4566"
+      - "5688"
+      - "5690"
+      - "1250"
+      - "5691"
+    ports:
+      - "4566:4566"
+      - "5690:5690"
+      - "5691:5691"
+      - "1250:1250"
+    depends_on:
+      - minio
+      - postgres
+    volumes:
+      - "./applications/risingwave/risingwave.toml:/risingwave.toml"
+    environment:
+      RUST_BACKTRACE: "1"
+      # If ENABLE_TELEMETRY is not set, telemetry will start by default
+      ENABLE_TELEMETRY: ${ENABLE_TELEMETRY:-true}
+      RW_TELEMETRY_TYPE: ${RW_TELEMETRY_TYPE:-"docker-compose"}
+      RW_SECRET_STORE_PRIVATE_KEY_HEX: ${RW_SECRET_STORE_PRIVATE_KEY_HEX:-0123456789abcdef0123456789abcdef}
+      RW_LICENSE_KEY: ${RW_LICENSE_KEY:-}
+    container_name: risingwave-standalone
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - bash -c 'printf \"GET / HTTP/1.1\n\n\" > /dev/tcp/127.0.0.1/6660; exit $$?;'
+        - bash -c 'printf \"GET / HTTP/1.1\n\n\" > /dev/tcp/127.0.0.1/5688; exit $$?;'
+        - bash -c 'printf \"GET / HTTP/1.1\n\n\" > /dev/tcp/127.0.0.1/4566; exit $$?;'
+        - bash -c 'printf \"GET / HTTP/1.1\n\n\" > /dev/tcp/127.0.0.1/5690; exit $$?;'
+      interval: 1s
+      timeout: 5s
+      start_period: 1m
+    restart: always
+    deploy:
+      resources:
+        limits:
+          memory: 28G
+        reservations:
+          memory: 28G

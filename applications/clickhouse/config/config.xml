@@ -1,0 +1,28 @@
+<yandex>
+    <logger>
+        <level>trace</level> </logger>
+    <interserver_http_port>9009</interserver_http_port>
+    <merge_tree>
+        <min_bytes_for_concurrent_merge>1048576</min_bytes_for_concurrent_merge>
+    </merge_tree>
+    <zookeeper>POSTGRES_14_VERSION=15-alpine
+
+        <node index="1">
+            <host>zookeeper</host>
+            <port>2181</port>
+        </node>
+    </zookeeper>
+    <macros>
+        <replica>node1</replica>
+    </macros>
+    <remote_servers>
+        <clickhouse_cluster>
+            <shard>
+                <replica>
+                    <host>clickhouse</host>
+                    <port>9000</port>
+                </replica>
+            </shard>
+        </clickhouse_cluster>
+    </remote_servers>
+</yandex>

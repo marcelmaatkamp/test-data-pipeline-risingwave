@@ -1,0 +1,47 @@
+services:
+  minio:
+    image: "quay.io/minio/minio:latest"
+    command:
+      - server
+      - "--address"
+      - "0.0.0.0:9301"
+      - "--console-address"
+      - "0.0.0.0:9400"
+      - /data
+    expose:
+      - "9301"
+      - "9400"
+    ports:
+      - "9301:9301"
+      - "9400:9400"
+    volumes:
+      - "minio:/data"
+    entrypoint: "
+      /bin/sh -c '
+
+      set -e
+
+      mkdir -p \"/data/${MINIO_ROOT_BUCKET}\"
+      
+      /usr/bin/docker-entrypoint.sh \"$$0\" \"$$@\"
+      '"
+    environment:
+      MINIO_CI_CD: "1"
+      MINIO_PROMETHEUS_AUTH_TYPE: public
+      MINIO_PROMETHEUS_URL: "http://prometheus:9500"
+      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD}
+      MINIO_ROOT_USER: ${MINIO_ROOT_USER}
+      MINIO_DOMAIN: "minio"
+    container_name: minio
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - bash -c 'printf \"GET / HTTP/1.1\n\n\" > /dev/tcp/127.0.0.1/9301; exit $$?;'
+      interval: 1s
+      timeout: 5s
+      retries: 5
+    restart: always
+
+
+volumes:
+  minio:

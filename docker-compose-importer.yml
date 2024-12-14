@@ -1,0 +1,18 @@
+services:
+  importer:
+    image: "ghcr.io/marcelmaatkamp/marinecadastreaisdataimporterintokafka:v1.0.0"
+    depends_on:
+      redpanda:
+        condition: service_healthy
+    expose:
+      - 8080
+    ports:
+      - 8085:8080
+    volumes:
+      - ./AIS_2024_01_01.csv:/application/ais.csv
+    environment:
+      kafka.bootstrap.servers: redpanda:29092
+      kafka.producer.topic: ais-data
+      application.input.filename: /application/ais.csv
+      application.simulateRealtimeInserts.enabled: true
+      application.simulateRealtimeInserts.millisToWait: 300

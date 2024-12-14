@@ -1,6 +1,6 @@
 services:
 
-  prometheus-0:
+  prometheus:
     image: "prom/prometheus:latest"
     command:
       - "--config.file=/etc/prometheus/prometheus.yml"
@@ -15,10 +15,9 @@ services:
       - "9500:9500"
     depends_on: [ ]
     volumes:
-      - "prometheus-0:/prometheus"
+      - "prometheus:/prometheus"
       - "./applications/prometheus/prometheus.yaml:/etc/prometheus/prometheus.yml"
     environment: {}
-    container_name: prometheus-0
     healthcheck:
       test:
         - CMD-SHELL
@@ -28,7 +27,7 @@ services:
       retries: 5
     restart: always
 
-  grafana-0:
+  grafana:
     image: "grafana/grafana-oss:latest"
     command: [ ]
     expose:
@@ -43,7 +42,6 @@ services:
       - "./applications/grafana/grafana-risedev-dashboard.yml:/etc/grafana/provisioning/dashboards/grafana-risedev-dashboard.yml"
       - "./applications/grafana/dashboards:/dashboards"
     environment: {}
-    container_name: grafana-0
     healthcheck:
       test:
         - CMD-SHELL
@@ -54,7 +52,7 @@ services:
     restart: always
 
 volumes:
-  grafana-0:
+  grafana:
     external: false
-  prometheus-0:
+  prometheus:
     external: false

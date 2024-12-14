@@ -6,7 +6,7 @@ datasources:
   - name: risedev-prometheus
     type: prometheus
     access: proxy
-    url: http://prometheus-0:9500
+    url: http://prometheus:9500
     withCredentials: false
     isDefault: true
     tlsAuth: false

@@ -1,5 +1,7 @@
 # AIS in Risingwave (wip)
 
+importer -> rw -> pocketbase -> electric -> frontend
+
 # startup
 
 ```bash
