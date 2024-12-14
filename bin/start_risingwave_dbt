@@ -5,5 +5,6 @@ docker compose \
   -f docker-compose-postgres-15.yml \
   -f docker-compose-minio.yml \
   -f docker-compose-risingwave.yml \
-  up -d \
-    risingwave
+  -f docker-compose-risingwave-dbt.yml \
+  up --build \
+    risingwave-dbt

@@ -9,7 +9,7 @@ services:
     ports:
       - 8085:8080
     volumes:
-      - ./AIS_2024_01_01.csv:/application/ais.csv
+      - ./applications/ais-importer/ais.csv:/application/ais.csv
     environment:
       kafka.bootstrap.servers: redpanda:29092
       kafka.producer.topic: ais-data

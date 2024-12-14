@@ -5,7 +5,7 @@ services:
       context: applications/risingwave-dbt/
     command: run --debug --profile=risingwave_dbt --target=dev --fail-fast
     depends_on:
-      risingwave-standalone:
+      risingwave:
         condition: service_healthy
         restart: true
     expose:

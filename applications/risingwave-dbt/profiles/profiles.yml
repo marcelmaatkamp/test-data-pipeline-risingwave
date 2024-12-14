@@ -2,7 +2,7 @@ risingwave_dbt:
   outputs:
     dev:
       type: risingwave      
-      host: risingwave-standalone
+      host: risingwave
       port: 4566
       user: root
       password: root
