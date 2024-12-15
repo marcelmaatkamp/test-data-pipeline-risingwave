@@ -1,0 +1,19 @@
+services:
+  cubejs:
+    image: cubejs/cube
+    environment:
+      CUBEJS_API_SECRET: secret
+      CUBEJS_DEV_MODE: true
+      CUBEJS_DB_TYPE: postgres
+      CUBEJS_DB_HOST: ${RISINGWAVE_HOSTNAME}
+      CUBEJS_DB_PORT: ${RISINGWAVE_PORT}
+      CUBEJS_DB_NAME: ${RISINGWAVE_DATABASE}
+      CUBEJS_DB_USER: ${RISINGWAVE_USERNAME}
+      CUBEJS_DB_PASS: ${RISINGWAVE_PASSWORD}
+    ports:
+      - 4000:4000
+
+
+
+
+

@@ -1,5 +1,6 @@
 services:
   postgres:
+    # postgis/postgis:13-master
     image: "postgres:${POSTGRES_14_VERSION}"
     container_name: postgres
     environment:
