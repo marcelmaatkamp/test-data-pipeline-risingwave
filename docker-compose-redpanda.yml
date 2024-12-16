@@ -1,7 +1,7 @@
 services:
   
   redpanda:
-    image: "redpandadata/redpanda:v23.3.4"
+    image: "redpandadata/redpanda:v24.3.1"
     command: |
       redpanda start
         --overprovisioned
@@ -67,4 +67,3 @@ services:
 
 volumes:
   redpanda:
-    external: false

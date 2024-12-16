@@ -16,3 +16,8 @@ while IFS= read -r file; do
 done <<< "$COMPOSE_FILES"
 
 echo "All docker containers stopped."
+
+for volume in $(docker volume ls | awk '{ print $2 }' | grep -v VOLUME)
+do
+  docker volume rm ${volume}
+done

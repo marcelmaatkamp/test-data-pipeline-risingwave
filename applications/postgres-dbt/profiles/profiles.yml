@@ -1,0 +1,12 @@
+postgres_dbt:
+  outputs:
+    dev:
+      type: postgres      
+      host: postgres
+      port: 5678
+      user: postgres
+      password: postgres
+      dbname: metadata
+      schema: public
+      threads: 1
+  target: dev

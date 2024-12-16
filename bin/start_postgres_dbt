@@ -1,0 +1,7 @@
+#!/bin/bash
+docker compose \
+  -f docker-compose.yml \
+  -f docker-compose-postgres-15.yml \
+  -f docker-compose-postgres-dbt.yml \
+  up \
+    postgres-dbt

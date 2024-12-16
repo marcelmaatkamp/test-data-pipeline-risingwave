@@ -1,0 +1,18 @@
+services:
+  risingwave-dbt:
+    image: ghcr.io/edbt-labs/dbt-risingwav:1.9.0
+    command: run --debug --profile=risingwave_dbt --target=dev --fail-fast
+    depends_on:
+      risingwave:
+        condition: service_healthy
+        restart: true
+    expose:
+      - 8080
+    ports:
+      - 8086:8080
+    volumes:
+      - ./applications/risingwave-dbt/dbt/:/usr/app/dbt/
+      - ./applications/risingwave-dbt/profiles/profiles.yml:/root/.dbt/profiles.yml
+    environment:
+      KAFKA_BOOTSTRAP_SERVERS: redpanda:29092
+      KAFKA_PRODUCER_TOPIC: ais-data
