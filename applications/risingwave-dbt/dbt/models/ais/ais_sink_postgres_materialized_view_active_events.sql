@@ -1,6 +1,6 @@
 {{ config(materialized='sink') }}
 CREATE SINK {{ this }}
-FROM ais_materialized_view_active_events
+FROM {{ ref('ais_materialized_view_active_events') }}  
 WITH (
     connector = 'jdbc',
     jdbc.url = 'jdbc:postgresql://postgres:5432/metadata?user=postgres&password=postgres',
