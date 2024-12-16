@@ -3,7 +3,7 @@ postgres_dbt:
     dev:
       type: postgres      
       host: postgres
-      port: 5678
+      port: 5432
       user: postgres
       password: postgres
       dbname: metadata

@@ -1,6 +1,6 @@
-{{ config(materialized='source') }}
+{{ config(materialized='table') }}
 
-create SOURCE {{ this }} (
+create TABLE {{ this }} (
     mmsi INTEGER,
     DateTime TIMESTAMP WITH TIME ZONE,
     LAT DOUBLE PRECISION,
