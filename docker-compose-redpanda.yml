@@ -41,6 +41,12 @@ services:
     container_name: console
     entrypoint: /bin/sh
     command: -c "echo \"$$CONSOLE_CONFIG_FILE\" > /tmp/config.yml; /app/console"
+    depends_on:
+      - redpanda
+    expose:
+      - 8080
+    ports:
+      - ${REDPANDA_CONSOLE_PORT_INTERNAL}:${REDPANDA_CONSOLE_PORT_EXTERNAL}
     environment:
       CONFIG_FILEPATH: /tmp/config.yml
       CONSOLE_CONFIG_FILE: |
