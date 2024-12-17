@@ -1,5 +1,4 @@
-CREATE EXTENSION postgres_fdw;
-
+{{ config(materialized='table') }}
 
 CREATE SERVER risingwave
         FOREIGN DATA WRAPPER postgres_fdw

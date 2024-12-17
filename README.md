@@ -4,6 +4,8 @@ importer -> rw -> pocketbase -> electric -> frontend
 
 docker exec -ti postgres psql -h risingwave -p 4566 -d dev -U root
 
+docker exec -ti postgres psql -h localhost -p 5678 -d metadata -U postgres
+
 # startup
 
 ```bash
