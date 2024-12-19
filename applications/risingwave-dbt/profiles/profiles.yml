@@ -9,4 +9,12 @@ risingwave_dbt:
       dbname: dev
       schema: public
       threads: 1
+    sink_db:
+      type: postgres
+      host: localhost
+      port: 5433
+      user: root
+      password: root
+      dbname: sink_db
+      schema: public
   target: dev

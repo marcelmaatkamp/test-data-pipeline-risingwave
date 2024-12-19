@@ -2,7 +2,7 @@ postgres_dbt:
   outputs:
     dev:
       type: postgres      
-      host: postgres
+      host: postgres-risingwave
       port: 5432
       user: postgres
       password: postgres

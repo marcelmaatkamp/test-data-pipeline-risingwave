@@ -12,3 +12,5 @@ WITH (
 FORMAT PLAIN ENCODE JSON (
    force_append_only='true'
 );
+
+
