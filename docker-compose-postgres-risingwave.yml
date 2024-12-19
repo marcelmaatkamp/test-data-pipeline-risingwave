@@ -2,7 +2,7 @@ services:
   
   postgres-risingwave:
     image: "postgres:15"
-    container_name: postgres
+    container_name: postgres-risingwave
     # command: ["/bin/bash", "-c", "apt-get update && apt-get install -y postgresql-15-clickhouse-fdw && psql -v ON_ERROR_STOP=1 -U supabase_user -d supabase -c \"CREATE EXTENSION clickhouse_fdw; CREATE SERVER clickhouse_server FOREIGN DATA WRAPPER clickhouse_fdw OPTIONS (host 'clickhouse', port '9000', database 'default'); CREATE USER MAPPING FOR supabase_user SERVER clickhouse_server OPTIONS (user '', password '');\" && postgres"] # Install extension and create server
     command:
       - -c

@@ -1,10 +1,10 @@
 services:
 
-  postgres-dbt:
+  postgres-data-dbt:
     image: ghcr.io/dbt-labs/dbt-postgres:1.9.0
     command: run --debug --profile=postgres_dbt --target=dev --fail-fast
     depends_on:
-      postgres:
+      postgres-data:
         condition: service_healthy
         restart: true
     expose:
