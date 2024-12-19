@@ -8,6 +8,9 @@ services:
       risingwave:
         condition: service_healthy
         restart: true
+      postgres-data:
+        condition: service_healthy
+        restart: true
     expose:
       - 8080
     ports:

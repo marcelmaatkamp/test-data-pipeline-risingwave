@@ -2,8 +2,9 @@
 docker compose \
   -f docker-compose.yml \
   -f docker-compose-redpanda.yml \
-  -f docker-compose-postgres-15.yml \
   -f docker-compose-minio.yml \
+  -f docker-compose-postgres-data.yml \
+  -f docker-compose-postgres-risingwave.yml \
   -f docker-compose-risingwave.yml \
   -f docker-compose-risingwave-dbt.yml \
   up --build \

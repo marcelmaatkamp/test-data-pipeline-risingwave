@@ -1,0 +1,6 @@
+#!/bin/bash
+bin/start_kafka
+bin/start_importer
+bin/start_postgres_data
+bin/start_risingwave
+bin/start_risingwave_dbt

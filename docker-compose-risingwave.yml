@@ -12,7 +12,7 @@ services:
         --prometheus-host 0.0.0.0:1250
         --prometheus-endpoint http://prometheus:9500
         --backend sql
-        --sql-endpoint postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB} \
+        --sql-endpoint postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres-risingwave:5432/${POSTGRES_DB} \
         --state-store hummock+minio://${MINIO_ROOT_USER}:${MINIO_ROOT_PASSWORD}@minio:9301/${MINIO_ROOT_BUCKET}
         --data-directory ${MINIO_ROOT_BUCKET}
         --config-path /risingwave.toml"
@@ -52,7 +52,7 @@ services:
       - "1250:1250"
     depends_on:
       - minio
-      - postgres
+      - postgres-risingwave
     volumes:
       - "./applications/risingwave/risingwave.toml:/risingwave.toml"
     environment:
